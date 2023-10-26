@@ -191,6 +191,8 @@ export async function serverBuild({
   if (appPathRoutesManifest) {
     appDir = path.join(pagesDir, '../app');
     appBuildTraces = await glob('**/*.js.nft.json', appDir);
+
+    // TODO: maybe?
     appRscPrefetches = await glob(`**/*${RSC_PREFETCH_SUFFIX}`, appDir);
 
     const rscContentTypeHeader =
@@ -1238,7 +1240,8 @@ export async function serverBuild({
     canUsePreviewMode,
     prerenderManifest.bypassToken || '',
     true,
-    middleware.dynamicRouteMap
+    middleware.dynamicRouteMap,
+    experimental.ppr
   ).then(arr =>
     localizeDynamicRoutes(
       arr,
@@ -1841,7 +1844,11 @@ export async function serverBuild({
                 entryDirectory,
                 `/__(.+?)${RSC_PREFETCH_SUFFIX}(?:/)?$`
               )}`,
-              dest: path.posix.join('/', entryDirectory, '/$1.rsc'),
+              dest: path.posix.join(
+                '/',
+                entryDirectory,
+                `/$1${experimental.ppr ? RSC_PREFETCH_SUFFIX : '.rsc'}`
+              ),
               has: [
                 {
                   type: 'header',
