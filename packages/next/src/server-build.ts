@@ -1720,7 +1720,7 @@ export async function serverBuild({
                     src: `^${path.posix.join(
                       '/',
                       entryDirectory,
-                      '/((?!.+\\.rsc).+?)(?:/)?$'
+                      '/((?:[^/]+/)*)((?!\\.rsc)[^/]+?)(?:/)?$'
                     )}`,
                     has: [
                       {
@@ -1731,7 +1731,7 @@ export async function serverBuild({
                     dest: path.posix.join(
                       '/',
                       entryDirectory,
-                      `/__$1${RSC_PREFETCH_SUFFIX}`
+                      `/$1__$2${RSC_PREFETCH_SUFFIX}`
                     ),
                     headers: { vary: rscVaryHeader },
                     continue: true,
