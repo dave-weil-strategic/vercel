@@ -1697,7 +1697,7 @@ export async function serverBuild({
 
       ...(appDir
         ? [
-            ...(rscPrefetchHeader
+            ...(rscPrefetchHeader && !experimental.ppr
               ? [
                   {
                     src: `^${path.posix.join('/', entryDirectory, '/')}`,
