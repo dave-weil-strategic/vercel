@@ -3303,6 +3303,7 @@ export function normalizePrefetches(prefetches: Record<string, FileFsRef>) {
   for (const key in prefetches) {
     const newKey = key.replace(/([^/]+\.prefetch\.rsc)$/, '__$1');
     updatedPrefetches[newKey] = prefetches[key];
+    delete prefetches[key];
   }
 
   return updatedPrefetches;
