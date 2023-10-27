@@ -1,5 +1,15 @@
 # vercel
 
+## 32.5.1
+
+### Patch Changes
+
+- Debug log load user exceptions ([#10773](https://github.com/vercel/vercel/pull/10773))
+
+- Updated dependencies [[`fc90a3dc0`](https://github.com/vercel/vercel/commit/fc90a3dc0bd998453f6527c03d211c35bb0d5770)]:
+  - @vercel/next@4.0.12
+  - @vercel/static-build@2.0.10
+
 ## 32.5.0
 
 ### Minor Changes

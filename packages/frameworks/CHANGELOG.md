@@ -1,5 +1,11 @@
 # @vercel/frameworks
 
+## 2.0.3
+
+### Patch Changes
+
+- update Angular output path discovery ([#10678](https://github.com/vercel/vercel/pull/10678))
+
 ## 2.0.2
 
 ### Patch Changes
